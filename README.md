@@ -64,7 +64,7 @@ Your class is determined automatically based on your stat levels. There are **6 
 
 ### Multi-Class Unlock Condition
 
-> **Primary stat must be ≥ Level 5**, and any additional stat must be **≥ half of the primary stat's level** to count toward the class.
+> **Primary stat must be ≥ Level 10**, and any additional stat must be **≥ half of the primary stat's level** to count toward the class.
 
 ---
 
