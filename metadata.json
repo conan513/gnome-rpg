@@ -1,10 +1,10 @@
 {
-    "uuid": "system-rpg@gnome-rpg.local",
+    "uuid": "system-rpg@conan513",
     "name": "SystemQuest",
     "description": "Turns your system resource usage (CPU, RAM, disk, network, keyboard, mouse) into an RPG character-building mini-game. Earn XP, level up stats, unlock achievements and discover your class.",
     "version": 1,
     "shell-version": ["45", "46", "47", "48", "49", "50"],
-    "url": "https://github.com/local/system-rpg",
+    "url": "https://github.com/conan513/gnome-rpg",
     "settings-schema": "org.gnome.shell.extensions.system-rpg",
-    "gettext-domain": "system-rpg@gnome-rpg.local"
+    "gettext-domain": "system-rpg@conan513"
 }

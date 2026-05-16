@@ -92,5 +92,6 @@ export default class SystemRpgExtension extends Extension {
         this._achievementManager = null;
         this._indicator          = null;
         this._settings           = null;
+        this._interfaceSettings  = null;
     }
 }
