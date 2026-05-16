@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.system-rpg"
+          path="/org/gnome/shell/extensions/system-rpg/">
+
+    <key name="xp-multiplier" type="d">
+      <default>1.0</default>
+      <range min="0.1" max="5.0"/>
+      <summary>XP Multiplier</summary>
+      <description>Multiplies all XP gains. 1.0 is normal speed.</description>
+    </key>
+
+    <key name="notifications-enabled" type="b">
+      <default>true</default>
+      <summary>Enable Notifications</summary>
+      <description>Show desktop notifications for level-ups and achievements.</description>
+    </key>
+
+    <key name="show-live-metrics" type="b">
+      <default>true</default>
+      <summary>Show Live Metrics</summary>
+      <description>Display real-time system metrics in the character sheet popup.</description>
+    </key>
+
+  </schema>
+</schemalist>

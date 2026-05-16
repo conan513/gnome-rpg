@@ -1,0 +1,329 @@
+/* ============================================================
+   SystemQuest — GNOME Shell RPG Stylesheet
+   ============================================================ */
+
+.dark-mode {
+    color: #ffffff;
+}
+
+.light-mode {
+    color: #242424;
+}
+
+.light-mode .system-rpg-sheet {
+    background-color: #f6f6f6;
+    color: #242424;
+}
+
+.light-mode .system-rpg-char-name,
+.light-mode .system-rpg-card-value,
+.light-mode .system-rpg-ach-name {
+    color: #000000;
+}
+
+.light-mode .system-rpg-tab-bar,
+.light-mode .system-rpg-overall-row {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.light-mode .system-rpg-tab-btn:checked {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.light-mode .system-rpg-xpbar {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.light-mode .system-rpg-stat-xp {
+    color: #242424;
+}
+
+/* --- Panel bar button --- */
+.system-rpg-panel-box {
+    spacing: 4px;
+    padding: 0 6px;
+}
+
+.system-rpg-panel-class {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.system-rpg-panel-level {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.system-rpg-panel-label-qs {
+    font-size: 13px;
+    font-weight: bold;
+    padding: 0 4px;
+}
+
+/* --- Tab Bar (Segmented Control) --- */
+.system-rpg-tab-bar {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 3px;
+    margin: 8px 0;
+}
+
+.system-rpg-tab-btn {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #b0b0b0;
+    transition-duration: 200ms;
+}
+
+.system-rpg-tab-btn:hover {
+    color: #ffffff;
+}
+
+.system-rpg-tab-btn:checked {
+    background-color: #242424;
+    color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* --- Popup sheet container --- */
+.system-rpg-sheet-item {
+    padding: 0px;
+    margin: 0px;
+}
+
+.system-rpg-sheet {
+    min-width: 280px;
+    max-width: 380px;
+    width: 100%;
+    padding: 16px;
+    spacing: 10px;
+    color: #ffffff;
+}
+
+/* --- Header --- */
+.system-rpg-header {
+    spacing: 16px;
+    padding-bottom: 8px;
+}
+
+.system-rpg-avatar {
+    border-radius: 32px;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.system-rpg-class-badge {
+    font-size: 18px;
+    background-color: #3584e4;
+    color: white;
+    border-radius: 12px;
+    padding: 2px;
+    border: 2px solid #242424;
+}
+
+.system-rpg-char-name {
+    font-size: 18px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.system-rpg-class-name {
+    font-size: 13px;
+    color: #b0b0b0;
+}
+
+/* --- Overall level row --- */
+.system-rpg-overall-row {
+    spacing: 12px;
+    padding: 8px 12px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+}
+
+.system-rpg-overall-label {
+    font-size: 12px;
+    font-weight: bold;
+    min-width: 100px;
+}
+
+/* --- Separator --- */
+.system-rpg-separator {
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 8px 0;
+}
+
+/* --- Stat rows --- */
+.system-rpg-stat-row {
+    spacing: 12px;
+    padding: 6px 4px;
+    min-height: 32px;
+}
+
+.system-rpg-stat-label-box {
+    spacing: 8px;
+}
+
+.system-rpg-stat-emoji {
+    font-size: 16px;
+    min-width: 24px;
+    text-align: center;
+}
+
+.system-rpg-stat-name {
+    font-size: 13px;
+    font-weight: 500;
+    min-width: 85px;
+}
+
+.system-rpg-stat-level {
+    font-size: 12px;
+    font-weight: bold;
+    color: #3584e4;
+    min-width: 45px;
+}
+
+.system-rpg-stat-xp {
+    font-size: 11px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* --- XP Bar --- */
+.system-rpg-xpbar {
+    height: 16px;
+    min-height: 16px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.15);
+    min-width: 120px;
+    clip-to-allocation: true;
+    margin: 0 4px;
+}
+
+.system-rpg-xpbar-fill {
+    height: 16px;
+    min-height: 16px;
+    border-radius: 8px;
+    background-color: #3584e4;
+}
+
+/* --- Live metrics strip --- */
+.system-rpg-metrics {
+    spacing: 16px;
+    padding: 4px 0;
+}
+
+.system-rpg-metric {
+    font-size: 11px;
+    color: #b0b0b0;
+    font-family: monospace;
+}
+
+/* --- Stat / Metric cards --- */
+.system-rpg-stat-card {
+    spacing: 12px;
+    padding: 10px 12px;
+    margin: 3px 0;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.system-rpg-card-icon {
+    font-size: 20px;
+    min-width: 28px;
+    text-align: center;
+}
+
+.system-rpg-card-title {
+    font-size: 11px;
+    color: #888888;
+    font-weight: 500;
+}
+
+.system-rpg-card-value {
+    font-size: 15px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* --- Input stats strip (legacy, unused) --- */
+.system-rpg-input-stats {
+    spacing: 12px;
+    padding: 4px 0;
+}
+
+/* --- Section title --- */
+.system-rpg-section-title {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #b0b0b0;
+    padding: 8px 0 4px 0;
+    letter-spacing: 0.5px;
+}
+
+/* --- Achievement cards (vertical list) --- */
+.system-rpg-ach-flow {
+    spacing: 4px;
+    padding: 4px 0;
+}
+
+.system-rpg-ach-card {
+    spacing: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.system-rpg-ach-card.unlocked {
+    background-color: rgba(53, 132, 228, 0.12);
+    border-color: rgba(53, 132, 228, 0.3);
+}
+
+.system-rpg-ach-card.locked {
+    background-color: rgba(255, 255, 255, 0.03);
+    opacity: 0.55;
+}
+
+.system-rpg-ach-icon {
+    font-size: 18px;
+    min-width: 28px;
+    text-align: center;
+}
+
+.system-rpg-ach-name {
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.system-rpg-ach-desc {
+    font-size: 11px;
+    color: #888888;
+}
+
+/* --- Reset button --- */
+.system-rpg-reset-btn {
+    margin-top: 12px;
+    padding: 8px 12px;
+    background-color: rgba(237, 51, 59, 0.1);
+    color: #ed333b;
+    border: 1px solid rgba(237, 51, 59, 0.2);
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: bold;
+    transition-duration: 200ms;
+}
+
+.system-rpg-reset-btn:hover {
+    background-color: rgba(237, 51, 59, 0.2);
+    color: #ff5f5f;
+}
+
+.system-rpg-reset-btn:active {
+    background-color: #ed333b;
+    color: white;
+}
