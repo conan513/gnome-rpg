@@ -2,7 +2,7 @@
 # install.sh — SystemQuest GNOME Extension Manager
 set -e
 
-EXTENSION_UUID="system-rpg@gnome-rpg.local"
+EXTENSION_UUID="system-rpg@conan513"
 SOURCE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 INSTALL_DIR="$HOME/.local/share/gnome-shell/extensions/$EXTENSION_UUID"
 ZIP_FILE="/tmp/$EXTENSION_UUID.zip"

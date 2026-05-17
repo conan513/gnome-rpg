@@ -199,7 +199,6 @@
     background-color: rgba(255, 255, 255, 0.15);
     min-width: 120px;
     clip-to-allocation: true;
-    margin: 0 4px;
 }
 
 .system-rpg-xpbar-fill {
