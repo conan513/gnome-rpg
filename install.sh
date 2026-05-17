@@ -26,7 +26,7 @@ echo "▶ Packing extension..."
 rm -f "$ZIP_FILE"
 # A gnome-extensions pack alapból a jelenlegi könyvtárat csomagolja
 # Csak azokat a fájlokat adjuk hozzá, amik kellenek
-zip -r "$ZIP_FILE" . -x "*.git*" "install.sh" "*.zip" "node_modules/*" ".gemini/*"
+zip -r "$ZIP_FILE" . -x "*.git*" "install.sh" "*.zip" "node_modules/*" ".gemini/*" "venv/*" "venv" "test_*.js"
 
 # 3. Telepítés (úgy, mint a weboldalról)
 echo "▶ Installing via gnome-extensions CLI..."

@@ -76,6 +76,7 @@
     font-weight: bold;
     color: #b0b0b0;
     transition-duration: 200ms;
+    text-align: center;
 }
 
 .system-rpg-tab-btn:hover {
@@ -326,3 +327,62 @@
     background-color: #ed333b;
     color: white;
 }
+
+/* --- Progress / Journey Card --- */
+.system-rpg-journey-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.system-rpg-journey-title {
+    font-weight: bold;
+    font-size: 14px;
+    color: #ffd700;
+}
+
+.system-rpg-journey-desc {
+    font-size: 12px;
+    color: #aaaaaa;
+}
+
+.system-rpg-journey-bar-fill {
+    background-color: #ffd700;
+}
+
+.system-rpg-journey-progress {
+    font-size: 11px;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+}
+
+/* --- XP Guide List --- */
+.system-rpg-xp-guide-list {
+    margin-top: 8px;
+    spacing: 12px;
+}
+
+.system-rpg-xp-guide-item {
+    spacing: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.system-rpg-xp-guide-emoji {
+    font-size: 24px;
+}
+
+.system-rpg-xp-guide-name {
+    font-weight: bold;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.system-rpg-xp-guide-desc {
+    font-size: 12px;
+    color: #aaaaaa;
+}
+

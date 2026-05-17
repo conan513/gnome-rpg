@@ -3,7 +3,7 @@ import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Clutter from 'gi://Clutter';
-import { STATS, STAT_META, xpForLevel } from '../lib/rpgEngine.js';
+import { STATS, STAT_META, xpForLevel, XP_GUIDE } from '../lib/rpgEngine.js';
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -166,6 +166,7 @@ class CharacterSheet extends St.BoxLayout {
         this._buildCharacterTab();
         this._buildStatsTab();
         this._buildAchievementsTab();
+        this._buildHelpTab();
 
         this._switchTab('character');
         this.refresh();
@@ -173,39 +174,58 @@ class CharacterSheet extends St.BoxLayout {
 
     _switchTab(tabId) {
         this._activeTab = tabId;
-        this._charTab.visible        = (tabId === 'character');
+        this._charScroll.visible     = (tabId === 'character');
         this._statsScroll.visible    = (tabId === 'stats');
         this._achScroll.visible      = (tabId === 'achievements');
+        this._helpScroll.visible     = (tabId === 'help');
 
-        // Update button styles
-        this._tabBtns.character.checked    = (tabId === 'character');
-        this._tabBtns.stats.checked        = (tabId === 'stats');
-        this._tabBtns.achievements.checked = (tabId === 'achievements');
+        const labels = {
+            character: { full: 'Character', short: 'Char' },
+            stats: { full: 'Statistics', short: 'Stats' },
+            achievements: { full: 'Achievements', short: 'Awards' },
+            help: { full: 'Help', short: 'Help' }
+        };
+
+        // Update button styles and labels
+        for (const [key, btn] of Object.entries(this._tabBtns)) {
+            const isSelected = (key === tabId);
+            btn.checked = isSelected;
+            btn.label = isSelected ? labels[key].full : labels[key].short;
+            btn.x_expand = isSelected; // Only the selected tab expands to fill space
+        }
     }
 
     _buildTabBar() {
         const bar = new St.BoxLayout({ style_class: 'system-rpg-tab-bar', x_expand: true });
         this._tabBtns = {
-            character:    new St.Button({ label: 'Character',    style_class: 'system-rpg-tab-btn', x_expand: true, checked: true }),
-            stats:        new St.Button({ label: 'Statistics',   style_class: 'system-rpg-tab-btn', x_expand: true }),
-            achievements: new St.Button({ label: 'Achievements', style_class: 'system-rpg-tab-btn', x_expand: true }),
+            character:    new St.Button({ style_class: 'system-rpg-tab-btn' }),
+            stats:        new St.Button({ style_class: 'system-rpg-tab-btn' }),
+            achievements: new St.Button({ style_class: 'system-rpg-tab-btn' }),
+            help:         new St.Button({ style_class: 'system-rpg-tab-btn' }),
         };
 
         this._tabBtns.character.connect('clicked', () => this._switchTab('character'));
         this._tabBtns.stats.connect('clicked', () => this._switchTab('stats'));
         this._tabBtns.achievements.connect('clicked', () => this._switchTab('achievements'));
+        this._tabBtns.help.connect('clicked', () => this._switchTab('help'));
 
         Object.values(this._tabBtns).forEach(btn => {
-            // Set x-expand on the button's layout properties if needed
-            btn.x_expand = true;
             bar.add_child(btn);
         });
         this.add_child(bar);
     }
 
     _buildCharacterTab() {
+        this._charScroll = new St.ScrollView({
+            x_expand: true,
+            y_expand: true,
+            hscrollbar_policy: St.PolicyType.NEVER,
+            vscrollbar_policy: St.PolicyType.AUTOMATIC,
+            overlay_scrollbars: true,
+        });
         this._charTab = new St.BoxLayout({ vertical: true, x_expand: true });
-        this._contentBin.add_child(this._charTab);
+        this._charScroll.set_child(this._charTab);
+        this._contentBin.add_child(this._charScroll);
 
         this._buildOverallBar(this._charTab);
         this._buildStats(this._charTab);
@@ -243,6 +263,50 @@ class CharacterSheet extends St.BoxLayout {
         this._contentBin.add_child(this._achScroll);
 
         this._buildAchievements(this._achTab);
+    }
+
+    _buildHelpTab() {
+        this._helpScroll = new St.ScrollView({
+            x_expand: true,
+            y_expand: true,
+            hscrollbar_policy: St.PolicyType.NEVER,
+            vscrollbar_policy: St.PolicyType.AUTOMATIC,
+            overlay_scrollbars: true,
+        });
+        this._helpTab = new St.BoxLayout({ vertical: true, x_expand: true });
+        this._helpScroll.set_child(this._helpTab);
+        this._contentBin.add_child(this._helpScroll);
+
+        this._buildProgressionGuide(this._helpTab);
+
+        this._helpTab.add_child(new St.Widget({ style_class: 'system-rpg-separator', x_expand: true }));
+        this._helpTab.add_child(makeLabel('How to earn XP', 'system-rpg-section-title'));
+
+        const list = new St.BoxLayout({ vertical: true, x_expand: true, style_class: 'system-rpg-xp-guide-list' });
+        
+        for (const info of XP_GUIDE) {
+            const item = new St.BoxLayout({ vertical: false, style_class: 'system-rpg-xp-guide-item', x_expand: true });
+            const emojiLabel = makeLabel(info.emoji, 'system-rpg-xp-guide-emoji');
+            
+            const textCol = new St.BoxLayout({ vertical: true, x_expand: true });
+            const nameLabel = makeLabel(info.name, 'system-rpg-xp-guide-name');
+            const descLabel = new St.Label({
+                text: info.desc,
+                style_class: 'system-rpg-xp-guide-desc'
+            });
+            descLabel.clutter_text.line_wrap = true;
+            descLabel.clutter_text.line_wrap_mode = import.meta.gi ? imports.gi.Pango.WrapMode.WORD : 0; // standard wrapping
+            descLabel.clutter_text.ellipsize = import.meta.gi ? imports.gi.Pango.EllipsizeMode.NONE : 0; // disable ellipsize
+            
+            textCol.add_child(nameLabel);
+            textCol.add_child(descLabel);
+            
+            item.add_child(emojiLabel);
+            item.add_child(textCol);
+            list.add_child(item);
+        }
+
+        this._helpTab.add_child(list);
     }
 
     setTheme(variant) {
@@ -328,6 +392,48 @@ class CharacterSheet extends St.BoxLayout {
             this._statRows[stat] = row;
             parent.add_child(row);
         }
+    }
+
+    _buildProgressionGuide(parent) {
+        parent.add_child(makeLabel('Progression Journey', 'system-rpg-section-title'));
+
+        this._journeyCard = new St.BoxLayout({
+            style_class: 'system-rpg-journey-card',
+            vertical: true,
+            x_expand: true,
+        });
+
+        const headerBox = new St.BoxLayout({ vertical: true, x_expand: true, style: 'margin-bottom: 8px;' });
+        this._journeyTitle = makeLabel('Next Unlock', 'system-rpg-journey-title');
+        this._journeyDesc = new St.Label({ text: 'Description', style_class: 'system-rpg-journey-desc' });
+        this._journeyDesc.clutter_text.line_wrap = true;
+        this._journeyDesc.clutter_text.line_wrap_mode = import.meta.gi ? imports.gi.Pango.WrapMode.WORD : 0;
+        this._journeyDesc.clutter_text.ellipsize = import.meta.gi ? imports.gi.Pango.EllipsizeMode.NONE : 0;
+        this._journeyDesc.x_expand = true;
+        
+        headerBox.add_child(this._journeyTitle);
+        headerBox.add_child(this._journeyDesc);
+
+        this._journeyBar = new XpBar();
+        this._journeyBar._fill.add_style_class_name('system-rpg-journey-bar-fill');
+        
+        this._journeyProgressText = makeLabel('0%', 'system-rpg-journey-progress');
+        this._journeyProgressText.x_align = Clutter.ActorAlign.CENTER;
+        this._journeyProgressText.y_align = Clutter.ActorAlign.CENTER;
+
+        const overlay = new St.Widget({
+            layout_manager: new Clutter.BinLayout(),
+            x_expand: true,
+            y_expand: true,
+            height: 18,
+        });
+        overlay.add_child(this._journeyBar);
+        overlay.add_child(this._journeyProgressText);
+
+        this._journeyCard.add_child(headerBox);
+        this._journeyCard.add_child(overlay);
+
+        parent.add_child(this._journeyCard);
     }
 
     _makeMetricCard(emoji, titleText, valueText) {
@@ -473,6 +579,13 @@ class CharacterSheet extends St.BoxLayout {
         for (const stat of STATS) {
             this._statRows[stat].update(this._engine.getXpProgress(stat));
         }
+
+        // Progression Guide
+        const unlockInfo = this._engine.getNextUnlockInfo();
+        this._journeyTitle.set_text(unlockInfo.title);
+        this._journeyDesc.set_text(unlockInfo.desc);
+        this._journeyBar.setFraction(unlockInfo.fraction);
+        this._journeyProgressText.set_text(`${Math.floor(unlockInfo.fraction * 100)}%`);
 
         // Live metrics
         if (liveMetrics && this._settings.get_boolean('show-live-metrics')) {
