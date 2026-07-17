@@ -117,7 +117,7 @@ class StatRow extends St.BoxLayout {
 
 function makeAchievementBadge(achievement) {
     const card = new St.BoxLayout({
-        style_class: `system-rpg-ach-card ${achievement.unlocked ? 'unlocked' : 'locked'}`,
+        style_class: `system-rpg-ach-card ${achievement.unlocked ? 'unlocked' : 'locked'}`, x_expand: true, clip_to_allocation: true,
         vertical: false,
         x_expand: true,
     });
@@ -158,7 +158,7 @@ class CharacterSheet extends St.BoxLayout {
         this._contentBin = new St.Widget({
             x_expand: true,
             y_expand: true,
-            height: 320,
+            min_height: 320,
             layout_manager: new Clutter.BinLayout(),
         });
         this.add_child(this._contentBin);

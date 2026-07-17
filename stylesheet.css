@@ -386,3 +386,35 @@
     color: #aaaaaa;
 }
 
+
+.system-rpg-sheet {
+    min-width: 340px;
+}
+
+.system-rpg-tab-btn {
+    min-width: 0;
+    padding: 4px 6px;
+}
+
+.system-rpg-stat-card {
+    min-width: 0;
+}
+
+.system-rpg-sheet {
+    max-width: 280px;
+    min-width: 200px;
+}
+
+.system-rpg-ach-name,
+.system-rpg-ach-desc,
+.system-rpg-card-title,
+.system-rpg-card-value,
+.system-rpg-journey-desc {
+    max-width: 200px;
+}
+
+.system-rpg-tab-btn {
+    min-width: 0;
+    padding: 4px 4px;
+    font-size: 11px;
+}
