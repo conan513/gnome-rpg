@@ -117,7 +117,7 @@ class StatRow extends St.BoxLayout {
 
 function makeAchievementBadge(achievement) {
     const card = new St.BoxLayout({
-        style_class: `system-rpg-ach-card ${achievement.unlocked ? 'unlocked' : 'locked'}`, x_expand: true, clip_to_allocation: true,
+        style_class: `system-rpg-ach-card ${achievement.unlocked ? 'unlocked' : 'locked'}`,
         vertical: false,
         x_expand: true,
     });
