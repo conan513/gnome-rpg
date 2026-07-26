@@ -158,7 +158,7 @@ class CharacterSheet extends St.BoxLayout {
         this._contentBin = new St.Widget({
             x_expand: true,
             y_expand: true,
-            height: 320,
+            min_height: 320,
             layout_manager: new Clutter.BinLayout(),
         });
         this.add_child(this._contentBin);

@@ -96,8 +96,8 @@
 }
 
 .system-rpg-sheet {
-    min-width: 280px;
-    max-width: 380px;
+    min-width: 240px;
+    max-width: 300px;
     width: 100%;
     padding: 16px;
     spacing: 10px;
@@ -158,13 +158,15 @@
 
 /* --- Stat rows --- */
 .system-rpg-stat-row {
-    spacing: 12px;
+    spacing: 4px;
     padding: 6px 4px;
     min-height: 32px;
 }
 
 .system-rpg-stat-label-box {
-    spacing: 8px;
+    spacing: 4px;
+    min-width: 130px;
+    max-width: 130px;
 }
 
 .system-rpg-stat-emoji {
@@ -174,20 +176,20 @@
 }
 
 .system-rpg-stat-name {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
-    min-width: 85px;
+    min-width: 70px;
 }
 
 .system-rpg-stat-level {
     font-size: 12px;
     font-weight: bold;
     color: #3584e4;
-    min-width: 45px;
+    min-width: 35px;
 }
 
 .system-rpg-stat-xp {
-    font-size: 11px;
+    font-size: 10px;
     color: #ffffff;
     font-weight: bold;
 }
@@ -198,7 +200,7 @@
     min-height: 16px;
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.15);
-    min-width: 120px;
+    min-width: 60px;
     clip-to-allocation: true;
 }
 
